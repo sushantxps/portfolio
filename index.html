@@ -166,6 +166,8 @@
   .f-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
   .tag{font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--fog);border:1px solid var(--line);padding:5px 10px;border-radius:2px;transition:border-color .25s,color .25s}
   .feature:hover .tag{border-color:#3a3e44}
+  a.tag{color:var(--lime-dim);border-color:#3a3e44}
+  a.tag:hover{color:#000;background:var(--lime);border-color:var(--lime)}
   .f-year{font-family:'JetBrains Mono';font-size:13px;color:var(--fog);letter-spacing:1px;text-align:right;padding-top:8px;white-space:nowrap}
   .f-badge{display:inline-block;font-family:'JetBrains Mono';font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#000;background:var(--lime);padding:4px 9px;border-radius:2px;margin-top:8px;font-weight:700}
   @media(max-width:820px){
@@ -200,7 +202,7 @@
   .skillcell{background:var(--ink);padding:clamp(22px,3vw,34px)}
   .skillcell h4{font-family:'JetBrains Mono';font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:16px}
   .skillcell ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-  .skillcell li{font-size:14.5px;color:#cace d2;color:#cdd1d6;display:flex;gap:10px;align-items:baseline}
+  .skillcell li{font-size:14.5px;color:#cdd1d6;display:flex;gap:10px;align-items:baseline}
   .skillcell li::before{content:"//";color:var(--lime-dim);font-family:'JetBrains Mono';font-size:11px}
   @media(max-width:820px){.skillgrid{grid-template-columns:1fr}}
 
@@ -229,6 +231,7 @@
   <div class="brand">SK<b>.</b></div>
   <div class="navlinks">
     <a href="#research">Research</a>
+    <a href="#engineering">Engineering</a>
     <a href="#beyond">Beyond</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
@@ -260,7 +263,7 @@
       <span class="l"><span>Kumar</span></span>
     </h1>
     <div class="hero-meta">
-      <span><b>Focus</b> &nbsp;Machine Learning · Interpretability</span>
+      <span><b>Focus</b> &nbsp;Machine Learning · Interpretability · Systems</span>
       <span><b>Base</b> &nbsp;New Delhi, India</span>
       <span><b>Next</b> &nbsp;MS AI, Columbia '27</span>
     </div>
@@ -304,8 +307,8 @@
 <!-- ===================== MARQUEE ===================== -->
 <div class="marquee">
   <div class="marquee-track">
-    <span>Machine Learning <i class="dot"></i> Interpretability <i class="dot"></i> Computer Vision <i class="dot"></i> Signal Processing <i class="dot"></i> Quantitative Modelling <i class="dot"></i></span>
-    <span>Machine Learning <i class="dot"></i> Interpretability <i class="dot"></i> Computer Vision <i class="dot"></i> Signal Processing <i class="dot"></i> Quantitative Modelling <i class="dot"></i></span>
+    <span>Machine Learning <i class="dot"></i> Interpretability <i class="dot"></i> Distributed Systems <i class="dot"></i> Computer Vision <i class="dot"></i> Experimentation <i class="dot"></i> Signal Processing <i class="dot"></i> Quantitative Modelling <i class="dot"></i></span>
+    <span>Machine Learning <i class="dot"></i> Interpretability <i class="dot"></i> Distributed Systems <i class="dot"></i> Computer Vision <i class="dot"></i> Experimentation <i class="dot"></i> Signal Processing <i class="dot"></i> Quantitative Modelling <i class="dot"></i></span>
   </div>
 </div>
 
@@ -411,12 +414,65 @@
   </div>
 </section>
 
-<!-- ===================== BEYOND (OFF TRACK) ===================== -->
-<section id="beyond" style="background:var(--ink2)">
+<!-- ===================== ENGINEERING (BUILDS) ===================== -->
+<section id="engineering" style="background:var(--ink2)">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="sec-kicker">// 02 — Off Track</div>
+        <div class="sec-kicker">// 02 — Built From Zero</div>
+        <div class="sec-title">Engineering</div>
+      </div>
+      <div class="sec-num">Systems, platforms, eval infrastructure</div>
+    </div>
+
+    <div class="features">
+
+      <article class="feature reveal">
+        <div class="f-idx">E/01</div>
+        <div class="f-main">
+          <div class="f-cat">Distributed Systems · Real-Time</div>
+          <h3 class="f-title">Real-Time Social Feed Platform</h3>
+          <div class="f-sub">WebSocket fan-out, Redis Pub/Sub, load tested to 25,000 concurrent connections</div>
+          <p class="f-desc">A collaborative feed with posts, threaded discussion, reactions, and live presence and typing indicators. Cross-instance fan-out runs through a WebSocket layer backed by Redis Pub/Sub, so an event on one server reaches subscribers on any other; heartbeats plus TTL expiry evict disconnected users instead of leaving ghosts online. Offset pagination went out after duplicate and missing posts appeared under concurrent writes: opaque cursors encoding both timestamp and post ID restored stable ordering. Load testing with k6 first capped near 3,500 sockets per instance on file descriptor limits. After kernel and FD tuning plus a horizontally scaled socket tier behind a sticky-session balancer, it held 25,000 concurrent connections at p50 18 ms, p95 42 ms, p99 85 ms.</p>
+          <div class="f-tags"><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">Redis</span><span class="tag">PostgreSQL</span><span class="tag">React</span><span class="tag">Docker</span><span class="tag">NGINX</span><span class="tag">k6</span><a class="tag" href="#" target="_blank" rel="noopener">Repo</a></div>
+        </div>
+        <div class="f-year">2026</div>
+      </article>
+
+      <article class="feature reveal">
+        <div class="f-idx">E/02</div>
+        <div class="f-main">
+          <div class="f-cat">Platform Engineering · Applied Statistics</div>
+          <h3 class="f-title">Experimentation and Feature Flag Platform</h3>
+          <div class="f-sub">Deterministic assignment, exposure pipeline, sequential testing, SRM detection</div>
+          <p class="f-desc">Assignment, flag evaluation, exposure logging, metric aggregation, and analysis in one stack. Variant assignment is deterministic: the user identifier is hashed with a per-experiment salt, so no central assignment service is needed and experiments stay independent of each other. A client SDK caches flag configs and evaluates them in-process with stale-while-revalidate refresh, keeping rendering off the network path. Exposure events flow through Kafka into aggregated metrics, with two-sample t-tests on primary metrics and guardrails on latency, crash, and error rates. A Monte Carlo study across 100,000 synthetic users and 10,000 runs showed naive daily monitoring inflating the false-positive rate from 5% to nearly 14%, which a sequential-testing correction resolves. Chi-square sample ratio mismatch detection alerts at p &lt; 0.01, and the dashboard carries confidence intervals, guardrail health, and a one-click kill switch.</p>
+          <div class="f-tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Kafka</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">React</span><span class="tag">SciPy</span><span class="tag">Docker</span><a class="tag" href="#" target="_blank" rel="noopener">Repo</a></div>
+        </div>
+        <div class="f-year">2026</div>
+      </article>
+
+      <article class="feature reveal">
+        <div class="f-idx">E/03</div>
+        <div class="f-main">
+          <div class="f-cat">LLM Systems · Eval Infrastructure</div>
+          <h3 class="f-title">AI Code Review Agent with Evaluation Infrastructure</h3>
+          <div class="f-sub">Golden benchmark set, CI regression gating, cost-aware model routing</div>
+          <p class="f-desc">An agent that reviews pull requests for correctness, maintainability, style, documentation, and test coverage. The harder half of the project is the evaluation harness that makes prompt and model changes measurable: a hand-labelled 1,200-example golden set spanning ordinary cases, edge cases, and adversarial inputs, deterministic checks on output schema, latency, and cost, and LLM-as-judge scoring calibrated against human labels. The suite runs inside CI as a regression gate, so any prompt, retrieval, or model change that drops aggregate scores below threshold fails the build, with prompt versions stored alongside source for reproducible comparison. Orchestration handles structured output validation, repair of malformed responses, exponential-backoff retries, and fallback routing on timeout. Cost and latency telemetry showed that routing style-only reviews to a smaller model cut inference cost 68% at equal quality, landing near $1.80 per 1,000 requests. Shipped with PII redaction ahead of external model calls, confidence-based escalation to human reviewers, and bias auditing across Python, Java, JavaScript, and C++. In an internal GitHub workflow it cut review turnaround by 52%.</p>
+          <div class="f-tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">LangChain</span><span class="tag">GitHub Actions</span><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">PyTest</span><a class="tag" href="#" target="_blank" rel="noopener">Repo</a></div>
+        </div>
+        <div class="f-year">2026</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BEYOND (OFF TRACK) ===================== -->
+<section id="beyond">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-kicker">// 03 — Off Track</div>
         <div class="sec-title">Beyond<br>Research</div>
       </div>
       <div class="sec-num">The human behind the work</div>
@@ -476,7 +532,7 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <div class="sec-kicker">// 03 — Telemetry</div>
+        <div class="sec-kicker">// 04 — Telemetry</div>
         <div class="sec-title">Stack</div>
       </div>
       <div class="sec-num">Tools & disciplines</div>
@@ -495,9 +551,9 @@
         <h4>// Languages</h4>
         <ul>
           <li>Python <em style="color:var(--lime-dim);font-style:normal">(proficient)</em></li>
+          <li>TypeScript · JavaScript</li>
           <li>C++ · C · Java</li>
-          <li>MATLAB · Verilog</li>
-          <li>SQL · LaTeX</li>
+          <li>MATLAB · Verilog · SQL</li>
         </ul>
       </div>
       <div class="skillcell">
@@ -509,6 +565,33 @@
           <li>Convex Optimisation</li>
         </ul>
       </div>
+      <div class="skillcell">
+        <h4>// Backend & Infra</h4>
+        <ul>
+          <li>Node.js · Express · FastAPI</li>
+          <li>Redis · PostgreSQL · Kafka</li>
+          <li>WebSockets · Pub/Sub</li>
+          <li>Docker · NGINX · GitHub Actions</li>
+        </ul>
+      </div>
+      <div class="skillcell">
+        <h4>// Frontend & Product</h4>
+        <ul>
+          <li>React · TypeScript</li>
+          <li>Optimistic UI · Rollback</li>
+          <li>Cursor-based pagination</li>
+          <li>Real-time presence · Dashboards</li>
+        </ul>
+      </div>
+      <div class="skillcell">
+        <h4>// Eval & Experimentation</h4>
+        <ul>
+          <li>A/B testing · Sequential testing</li>
+          <li>SRM detection · Guardrail metrics</li>
+          <li>LLM-as-judge harnesses</li>
+          <li>Prometheus · Grafana · k6 · PyTest</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -516,7 +599,7 @@
 <!-- ===================== CONTACT ===================== -->
 <section id="contact" class="contact">
   <div class="wrap">
-    <div class="sec-kicker reveal" style="text-align:center">// 04 — Pit Lane</div>
+    <div class="sec-kicker reveal" style="text-align:center">// 05 — Pit Lane</div>
     <div class="big reveal">Let's<br><a href="mailto:sushant.ee1iitd@gmail.com">Talk</a></div>
     <div class="contact-links reveal">
       <a class="clink" href="mailto:sushant.ee1iitd@gmail.com">Email</a>
