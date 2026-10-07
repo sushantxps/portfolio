@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add("js");</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sushant Kumar</title>
 <meta name="description" content="Sushant Kumar. Drone perception, on device inference and the geometry of how language models reason. IIT Delhi electrical engineer, Columbia MS AI 2027.">
@@ -37,7 +38,8 @@ button{font:inherit;color:inherit}
 @media (max-width:640px){.outline{-webkit-text-stroke-width:1.2px}}
 
 /* ---------- boot ---------- */
-#boot{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:flex-end;justify-content:space-between;padding:var(--gutter);transition:transform .8s cubic-bezier(.76,0,.24,1)}
+#boot{display:none}
+.js #boot{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:flex-end;justify-content:space-between;padding:var(--gutter);transition:transform .8s cubic-bezier(.76,0,.24,1)}
 #boot.done{transform:translateY(-100%)}
 #boot .bnum{font-family:var(--display);font-weight:900;font-size:clamp(4rem,18vw,14rem);line-height:.8;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 #boot .blog{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:right;line-height:1.8;max-width:40vw}
@@ -83,11 +85,13 @@ button{font:inherit;color:inherit}
 .hero .name{position:absolute;left:var(--gutter);bottom:clamp(20px,4vh,48px);z-index:2;pointer-events:none}
 .hero h1{font-size:clamp(3rem,8.5vw,9rem);white-space:nowrap}
 .hero h1 .l{display:block;overflow:hidden}
-.hero h1 .l span{display:block;transform:translateY(110%);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.js .hero h1 .l span{transform:translateY(110%);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.hero h1 .l span{display:block}
 body.ready .hero h1 .l span{transform:none}
 body.ready .hero h1 .l:nth-child(2) span{transition-delay:.08s}
 .hero .stickers{position:absolute;left:var(--gutter);top:calc(env(safe-area-inset-top,0px) + 84px);z-index:2;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
-.stk{font-family:var(--mono);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;padding:7px 11px;border-radius:6px;background:var(--ink);color:var(--bg);transform:rotate(-1.5deg);opacity:0;transition:opacity .6s,transform .6s}
+.stk{font-family:var(--mono);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;padding:7px 11px;border-radius:6px;background:var(--ink);color:var(--bg);transform:rotate(-1.5deg);transition:opacity .6s,transform .6s}
+.js .stk{opacity:0}
 .stk.c{background:var(--coral)}.stk.l{background:var(--lime);color:var(--ink);transform:rotate(1deg)}
 body.ready .stk{opacity:1}
 body.ready .stk:nth-child(2){transition-delay:.15s}body.ready .stk:nth-child(3){transition-delay:.3s}
@@ -109,7 +113,8 @@ body.ready .stk:nth-child(2){transition-delay:.15s}body.ready .stk:nth-child(3){
 .head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px 40px;flex-wrap:wrap;margin-bottom:clamp(22px,3vw,40px)}
 .head h2{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(2rem,4.5vw,4.2rem);line-height:.84;letter-spacing:.005em}
 .head h2 .m{display:block;overflow:hidden}
-.head h2 .m span{display:block;transform:translateY(110%);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.head h2 .m span{display:block}
+.js .head h2 .m span{transform:translateY(110%);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
 .head h2.in .m span{transform:none}
 .head p{max-width:44ch;color:var(--muted);font-size:1rem}
 .head .num{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:12px}
@@ -213,12 +218,12 @@ footer{border-top:2px solid var(--ink);padding-block:22px 34px;display:flex;flex
 /* ---------- reveal ---------- */
 .rv{opacity:1;transform:none}
 @media (prefers-reduced-motion:no-preference){
-  .rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
-  .rv.in{opacity:1;transform:none}
+  .js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+  .js .rv.in{opacity:1;transform:none}
 }
 </style>
 </head>
-<body class="booting">
+<body>
 
 <div id="boot" aria-hidden="true"><i class="bar" id="bbar"></i><div class="bnum" id="bnum">000</div><div class="blog" id="blog"><b>boot</b><br>cameras</div></div>
 <div id="prog" aria-hidden="true"></div>
@@ -379,11 +384,11 @@ footer{border-top:2px solid var(--ink);padding-block:22px 34px;display:flex;flex
 <div class="block ink"><div class="wrap">
   <p class="q rv" style="max-width:none">Key <span class="o">numbers</span></p>
   <div class="nums rv" style="margin-top:30px">
-    <div class="n" style="--c:var(--coral)"><b data-count="0.967" data-dec="3">0</b><span>Spearman ρ, hyperbolic probe</span></div>
-    <div class="n" style="--c:var(--sky)"><b data-count="25000">0</b><span>concurrent connections, load tested</span></div>
-    <div class="n" style="--c:var(--mint)"><b data-count="85" data-suf=" ms">0</b><span>p99 latency at that load</span></div>
-    <div class="n" style="--c:var(--sun)"><b data-count="40" data-pre="+" data-suf="%">0</b><span>motion detection over baseline</span></div>
-    <div class="n" style="--c:var(--lime)"><b data-count="417">0</b><span>All India Rank, JEE Advanced 2022</span></div>
+    <div class="n" style="--c:var(--coral)"><b data-count="0.967" data-dec="3">0.967</b><span>Spearman ρ, hyperbolic probe</span></div>
+    <div class="n" style="--c:var(--sky)"><b data-count="25000">25,000</b><span>concurrent connections, load tested</span></div>
+    <div class="n" style="--c:var(--mint)"><b data-count="85" data-suf=" ms">85 ms</b><span>p99 latency at that load</span></div>
+    <div class="n" style="--c:var(--sun)"><b data-count="40" data-pre="+" data-suf="%">+40%</b><span>motion detection over baseline</span></div>
+    <div class="n" style="--c:var(--lime)"><b data-count="417">417</b><span>All India Rank, JEE Advanced 2022</span></div>
   </div>
 </div></div>
 
@@ -457,6 +462,7 @@ const rgb=(c,a=1)=>`rgba(${c[0]|0},${c[1]|0},${c[2]|0},${a})`;
   const lines=[[0,'cameras'],[18,'stereo calibration'],[38,'IMU fusion'],[58,'depth map'],[76,'visual inertial odometry'],[90,'tracking']];
   const finish=()=>{ el.classList.add('done'); document.body.classList.remove('booting'); document.body.classList.add('ready'); setTimeout(()=>el.remove(),900); };
   if(REDUCE){ finish(); return; }
+  document.body.classList.add('booting');
   const t0=performance.now(), D=1350;
   (function tick(now){
     const p=Math.min(1,(now-t0)/D), e=1-Math.pow(1-p,3), v=Math.round(e*100);
@@ -495,7 +501,7 @@ const isDark=()=>true;
 (function(){
   const els=$$('.rv, .head h2, [data-count]');
   const run=el=>{ el.classList.add('in'); if(el.dataset.count!=null) count(el); };
-  function count(el){ const end=parseFloat(el.dataset.count), dec=+(el.dataset.dec||0), pre=el.dataset.pre||'', suf=el.dataset.suf||''; if(REDUCE){ el.textContent=pre+end.toLocaleString('en-IN',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf; return; } const t0=performance.now(), D=1400; (function t(now){ const p=Math.min(1,(now-t0)/D), e=1-Math.pow(1-p,3); el.textContent=pre+(end*e).toLocaleString('en-IN',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf; if(p<1) requestAnimationFrame(t); })(t0); }
+  function count(el){ const end=parseFloat(el.dataset.count), dec=+(el.dataset.dec||0), pre=el.dataset.pre||'', suf=el.dataset.suf||''; const final=el.textContent; if(REDUCE) return; const t0=performance.now(), D=1400; (function t(now){ const p=Math.min(1,(now-t0)/D), e=1-Math.pow(1-p,3); if(p<1){ el.textContent=pre+(end*e).toLocaleString('en-IN',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf; requestAnimationFrame(t); } else el.textContent=final; })(t0); }
   if(!('IntersectionObserver' in window)||REDUCE){ els.forEach(run); return; }
   const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ run(en.target); io.unobserve(en.target); } }),{rootMargin:'0px 0px -10% 0px'});
   els.forEach((e,i)=>{ if(e.classList.contains('rv')) e.style.transitionDelay=(i%4)*60+'ms'; io.observe(e); });
