@@ -174,7 +174,7 @@ footer{margin-top:84px; padding-top:18px; border-top:1px solid var(--line); font
 
 <section id="projects">
   <div class="sh"><h2>Projects</h2></div>
-  <p class="intro">The work I would show first: drone perception, an interpretability paper, clinical video analysis, generative AI for hardware, and the VIO pipeline I am building now.</p>
+  <p class="intro">The work I would show first: drone perception, an interpretability paper, clinical video analysis, generative AI for hardware, a reinforcement learning ablation study, and the VIO pipeline I am building now.</p>
   <ul class="list">
     <li>
       <div class="row"><h3>Autonomous drone perception</h3><div class="stat"><b>6 DoF</b> <span>pose, validated in flight</span></div></div>
@@ -199,6 +199,12 @@ footer{margin-top:84px; padding-top:18px; border-top:1px solid var(--line); font
       <div class="meta">Harvard Edge Computing Lab · remote · Jan to Jul 2024</div>
       <p>Contributed to the RTLGen Bench Harness architecture and built the LangChain pipelines that score generated hardware designs and feed the results back into the prompts. Prof. Vijay Janapa Reddi's group. Acknowledged in the paper.</p>
       <div class="tags">LangChain · LLM evaluation · Verilog</div>
+    </li>
+    <li>
+      <div class="row"><h3><a href="https://github.com/sushantxps/ppo-ablations">What actually matters in PPO</a></h3><div class="stat"><b>168</b> <span>training runs, 8 seeds</span></div></div>
+      <div class="meta">Reinforcement learning · Independent · 2026</div>
+      <p>PPO in a single PyTorch file, then an ablation study that removes one implementation detail at a time across CartPole, Acrobot and Pendulum. Reusing each batch for several epochs matters most: with one pass the aggregate score falls from 1.00 to 0.18. Clipping only matters when the policy tries to move far. On Acrobot it never activates and the runs are byte for byte identical to the baseline, while on Pendulum removing it drops the return from −203 to −917. Scored with interquartile means and bootstrap confidence intervals.</p>
+      <div class="tags">PyTorch · Gymnasium · PPO · GAE · bootstrap CIs</div>
     </li>
     <li>
       <div class="row"><h3>Stereo visual inertial odometry on EuRoC MAV <span class="pill lime">In progress</span></h3><div class="stat"><b>VIO</b> <span>stereo + IMU</span></div></div>
